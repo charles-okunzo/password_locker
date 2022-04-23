@@ -38,6 +38,18 @@ class TestCredentials(unittest.TestCase):
     self.assertEqual(len(Credentials.user_cred_list), 1)
 
 
+  def test_save_multiple_contacts(self):
+    '''
+    test_save_multiple_contacts test case to check if we can store multiple oblects in our credentials list
+    '''
+    self.new_user_credential.save_credential()
+
+    test_credential = Credentials("AngelBecky", "becky@123")
+    test_credential.save_credential()
+
+    self.assertEqual(len(Credentials.user_cred_list), 2)
+
+
 
 if __name__ == '__main__':
   unittest.main()
