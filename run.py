@@ -20,7 +20,7 @@ def save_user_acc(acc):
   '''
   function to save new user accounts created
   '''
-  acc.save_user_account(acc)
+  acc.save_user_account()
 
 
 #create new user credential
@@ -38,4 +38,19 @@ def save_credential(cred):
   '''
   function to save new credential created
   '''
-  cred.save_credential(cred)
+  cred.save_credential()
+
+#search for existing credentials
+def search_cred(name):
+  '''
+  function that searches for existing user credentials
+  '''
+  Credentials.search_by_name(name)
+
+
+#display existing credentials
+def display_credentials():
+  '''
+  function that rerturns all saved credentials
+  '''
+  Credentials.display_cred()
