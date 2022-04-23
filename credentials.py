@@ -16,3 +16,10 @@ class Credentials:
     save_credential method that stores created credential in the user_cred_list
     '''
     Credentials.user_cred_list.append(self)
+
+
+  def delete_credential(self):
+    '''
+    delete_credential method that helps remove stored credential from user_cred_list
+    '''
+    Credentials.user_cred_list.remove(self)
