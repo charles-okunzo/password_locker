@@ -61,6 +61,18 @@ class TestCredentials(unittest.TestCase):
     self.assertEqual(len(Credentials.user_cred_list), 1)
 
 
+  def test_search_cred_by_name(self):
+    '''
+    test case that checks if a stored credential can be found when searched by name
+    '''
+    self.new_user_credential.save_credential()
+    test_credential = Credentials("AngelBecky", "becky@123")
+    test_credential.save_credential()
+
+    searched_cred = Credentials.search_by_name("Charlo")
+    self.assertEqual(searched_cred, self.new_user_credential)
+
+
 
 if __name__ == '__main__':
   unittest.main()

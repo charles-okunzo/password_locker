@@ -23,3 +23,13 @@ class Credentials:
     delete_credential method that helps remove stored credential from user_cred_list
     '''
     Credentials.user_cred_list.remove(self)
+
+    
+  @classmethod
+  def search_by_name(cls, username):
+    '''
+    class method that loops into user_cred_list and returns credential details
+    '''
+    for credential in cls.user_cred_list:
+      if credential.cred_username == username:
+        return credential
