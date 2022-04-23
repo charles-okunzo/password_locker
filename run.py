@@ -2,14 +2,33 @@
 
 
 
-#create new User account
 
+from credentials import Credentials
 from user import User
 
 
+#create new User account
 def create_new_user_account(acc_user_name, pass_code):
   '''
   function to create new user account
   '''
   new_user_acc = User(acc_user_name, pass_code)
+  return new_user_acc
+
+#save new user accounts created 
+def save_user_acc(acc):
+  '''
+  function to save new user accounts created
+  '''
+  acc.save_user_account(acc)
+
+
+#create new user credential
+
+def create_new_cred(cred_username, cred_pass_code):
+  '''
+  function to create new instances of user's credentials
+  '''
+  new_cred = Credentials(cred_username, cred_pass_code)
+  return new_cred
 
