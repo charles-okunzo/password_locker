@@ -40,6 +40,15 @@ def save_credential(cred):
   '''
   cred.save_credential()
 
+
+#delete axisting credentials
+
+def delete_credential(cred):
+  '''
+  function that gets rid of unwanted user credentials
+  '''
+  cred.delete_credential()
+
 #search for existing credentials
 def search_cred(name):
   '''
