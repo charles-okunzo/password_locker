@@ -7,3 +7,10 @@ class User:
   def __init__(self, username, pass_code):
       self.username = username
       self.pass_code = pass_code
+
+
+  def save_user_account(self):
+    '''
+    save_user_contact method to save user accounts to the user account's list
+    '''
+    User.user_accounts_list.append(self)
