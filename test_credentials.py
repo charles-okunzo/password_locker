@@ -14,6 +14,12 @@ class TestCredentials(unittest.TestCase):
       '''
       self.new_user_credential = Credentials("Charlo", "okunzo@123")
 
+  def tearDown(self):
+      '''
+      tearDown method that performs clean up after each test case has run
+      '''
+      Credentials.user_cred_list = []
+
 
   def test_init(self):
     '''
