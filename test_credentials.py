@@ -72,6 +72,12 @@ class TestCredentials(unittest.TestCase):
     searched_cred = Credentials.search_by_name("Charlo")
     self.assertEqual(searched_cred, self.new_user_credential)
 
+  def test_display_all_cred(self):
+    '''
+    test that returns a list of all saved credentials
+    '''
+    self.assertEqual(Credentials.display_cred(), Credentials.user_cred_list)
+
 
 
 if __name__ == '__main__':
