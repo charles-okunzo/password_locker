@@ -32,3 +32,10 @@ def create_new_cred(cred_username, cred_pass_code):
   new_cred = Credentials(cred_username, cred_pass_code)
   return new_cred
 
+#save new user credentials created
+
+def save_credential(cred):
+  '''
+  function to save new credential created
+  '''
+  cred.save_credential(cred)
