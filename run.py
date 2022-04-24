@@ -2,6 +2,8 @@
 
 import random
 import string
+
+import pyperclip
 from credentials import Credentials
 from user import User
 
@@ -53,7 +55,7 @@ def search_cred(name):
   '''
   function that searches for existing user credentials
   '''
-  Credentials.search_by_name(name)
+  return Credentials.search_by_name(name)
 
 
 #display existing credentials
@@ -61,7 +63,7 @@ def display_credentials():
   '''
   function that rerturns all saved credentials
   '''
-  Credentials.display_cred()
+  return Credentials.display_cred()
 
 
 #generate random user passcode
@@ -173,6 +175,7 @@ def main():
           print("Choose an option below to proceed")
           print("\tcr--> to create new credential")
           print("\tdlt--> to delete existing credential")
+          print("\tscr--> to search for an existing credential")
           print("\tdc--> to display all available credentials")
           print("\tcp--> to copy credential to clipboard")
           print("-"*10)
@@ -229,6 +232,64 @@ def main():
             cred_to_delete = input("Enter Account Name of the credential you want to delete: ")
             cred_found = search_cred(cred_to_delete)
             delete_credential(cred_found)
+            print("Credential successfully deleted!")
+
+          elif option_code == "dc":
+            if display_credentials() == None:
+              print("No credentials found yet")
+              print(display_credentials())
+
+            else:
+              print("\n")
+              print("AVAILABLE CREDENTIALS")
+              print("_"*20)
+              for cred in display_credentials():
+                print(cred)
+                print(f"\t-->{cred.cred_username} - {cred.cred_pass_code}")
+
+          elif option_code == "scr":
+            print("\n")
+            print("SEARCH AVAILABLE CREDENTIALS")
+            print("_"*20)
+            cred_to_search = input("Enter name to search: ")
+            found_cred = search_cred(cred_to_search)
+            print(found_cred)
+
+          elif option_code == "cp":
+            print("\n")
+            print("COPY CREDENTIALS TO CLIPBOARD")
+            print("_"*20)
+            to_copy = input("Enter username to copy: ")
+            found = search_cred(to_copy)
+            pyperclip.copy(found.cred_username)
+            print("-"*20)
+            print("\tCopied successfully")
+            print("-"*20)
+
+          elif option_code == "ex":
+            print("\n")
+            print("Are you sure you want to exit this application?\nY/N")
+            response = input("Answer: ").upper()
+            if response == "Y":
+              print("-"*20)
+              print("\tThank you for using this application. \nSee you again next time!")
+              print("-"*20)
+            elif response == "N":
+              print("\n")
+              print("Choose an option below to proceed")
+              print("\tcr--> to create new credential")
+              print("\tdlt--> to delete existing credential")
+              print("\tscr--> to search for an existing credential")
+              print("\tdc--> to display all available credentials")
+              print("\tcp--> to copy credential to clipboard")
+              print("-"*10)
+              option_code = input("Answer: ").lower()
+
+            else:
+              print("-"*20)
+              print("\tErr-->Invalid selection!")
+              print("-"*20)
+
 
           else:
             print("-"*20)

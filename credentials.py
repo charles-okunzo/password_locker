@@ -32,7 +32,7 @@ class Credentials:
     '''
     for credential in cls.user_cred_list:
       if credential.cred_username == username:
-        return credential
+        return credential.cred_pass_code
 
 
   @classmethod
