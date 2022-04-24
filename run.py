@@ -104,7 +104,7 @@ def main():
     print("\n")
     print("Choose options below.....")
     print("li----> to Login if already have an existing account")
-    print("su-----> to Sign up if you are new to the application")
+    print("su----> to Sign up if you are new to the application")
     code= input("Answer: ").lower()
 
     #signup if user selects su
@@ -140,14 +140,14 @@ def main():
         confirm_pass_code = input("Confirm password: ")
 
       else:
-        created_user = User(user_name, pass_code)
+        created_user = create_new_user_account(user_name, pass_code)
         save_user_acc(created_user)
         print("\n")
         print(f"-----CONGRATULATIONS {user_name.upper()}!!! YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY-----")
         print("\n")
         print("------>Kindly proceed to LOGIN")
         print("\n")
-        print("LOG IN INTO YOUR ACCOUNT")
+        print("LOGIN INTO YOUR ACCOUNT")
         print("_"*25)
         keyedin_username = input("Enter your Username: ")
         keyedin_passcode = input("Enter your Password: ")
@@ -168,12 +168,87 @@ def main():
         print("-"*25)
         print("-----Keep all your account passwords safe and secure in one place-----")
 
+        while True:
+          print("\n")
+          print("Choose an option below to proceed")
+          print("\tcr--> to create new credential")
+          print("\tdlt--> to delete existing credential")
+          print("\tdc--> to display all available credentials")
+          print("\tcp--> to copy credential to clipboard")
+          print("-"*10)
+          option_code = input("Answer: ").lower()
+
+          if option_code == "cr":
+            print("\n")
+            print("CREATE AND SAVE CREDENTIAL")
+            print("_"*25)
+            cred_username = input("Enter Account Name: ")
+
+            while True:
+              print("\n")
+              print("Select option for password generation")
+              print("-"*10)
+              print("\tin--> to input the password yourself")
+              print("\tgt--> to auto-generate password")
+              print("\tex--> to leave prompt")
+
+              p_code = input("Answer: ")
+
+              if p_code == "in":
+                print("\n")
+                cred_password = input("Enter Account Password: ")
+                print("-"*20)
+                while len(cred_password)<4:
+                  print("----> Password too short. Must be atleast 4 characters.")
+                  print("-"*10)
+                  cred_password = input("Enter Account Password: ")
+                break
+
+              elif p_code == "gt":
+                cred_password = generate_random_passcode()
+                print("-"*20)
+                print("Password successfully generated")
+                print("-"*20)
+                break
+
+              elif p_code == "ex":
+                break
+
+              else:
+                print("Incorrect option. Try again!")
+            #create and save credential
+            created_credential = create_new_cred(cred_username, cred_password)
+            save_credential(created_credential)
+            print("\n")
+            print("\tCredentials have been successfully created and saved!")
+
+          elif option_code == "dlt":
+            print("\n")
+            print("DELETE CREDENTIAL")
+            print("_"*20)
+            cred_to_delete = input("Enter Account Name of the credential you want to delete: ")
+            cred_found = search_cred(cred_to_delete)
+            delete_credential(cred_found)
+
+          else:
+            print("-"*20)
+            print("\tErr-->Invalid selection!")
+            print("-"*20)  
+
+
+
+
+                
+
+
+
 
 
       
         
-
-    break
+    print("-"*20)
+    print("\tErr-->Invalid selection!")
+    print("-"*20)
 if __name__ == '__main__':
   main()
 
