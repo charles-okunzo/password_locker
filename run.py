@@ -1,8 +1,7 @@
 #!/usr/bin/env python3.8
 
-
-
-
+import random
+import string
 from credentials import Credentials
 from user import User
 
@@ -63,3 +62,37 @@ def display_credentials():
   function that rerturns all saved credentials
   '''
   Credentials.display_cred()
+
+
+#generate random user passcode
+def generate_random_passcode():
+  '''
+  function that generates random user passcode digits
+  '''
+  string_code = string.ascii_letters + string.digits + string.punctuation
+
+  while True:
+    try:
+      code_length = int(input('Enter password length\n'))
+      if code_length <4:
+        print("-"*10)
+        print("Length must be atleast 4 digits")
+        print("-"*10)
+        continue
+
+      rand_code = random.sample(string_code, code_length)
+    
+    except ValueError:
+      print("-"*10)
+      print("Error::Please input a valid number")
+      print("-"*10)
+      continue
+
+    else:
+      gen_password = ''.join(rand_code)
+      return gen_password
+
+
+def main():
+  
+  
