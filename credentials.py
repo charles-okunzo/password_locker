@@ -18,7 +18,7 @@ class Credentials:
     Credentials.user_cred_list.append(self)
 
 
-  def delete_credential(self):
+  def del_credential(self):
     '''
     delete_credential method that helps remove stored credential from user_cred_list
     '''
@@ -32,7 +32,7 @@ class Credentials:
     '''
     for credential in cls.user_cred_list:
       if credential.cred_username == username:
-        return credential.cred_pass_code
+        return credential
 
 
   @classmethod
