@@ -139,6 +139,37 @@ def main():
 
         confirm_pass_code = input("Confirm password: ")
 
+      else:
+        created_user = User(user_name, pass_code)
+        save_user_acc(created_user)
+        print("\n")
+        print(f"-----CONGRATULATIONS {user_name.upper()}!!! YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY-----")
+        print("\n")
+        print("------>Kindly proceed to LOGIN")
+        print("\n")
+        print("LOG IN INTO YOUR ACCOUNT")
+        print("_"*25)
+        keyedin_username = input("Enter your Username: ")
+        keyedin_passcode = input("Enter your Password: ")
+
+        #check if correct username and password have been entered
+      while user_name != keyedin_username or pass_code != keyedin_passcode:
+        print("-"*15)
+        print("Invalid username or password")
+        print("-"*15)
+        keyedin_username = input("Enter your Username: ")
+        keyedin_passcode = input("Enter your Password: ")
+
+      else:
+        print("\n")
+        print(f"Logged In as {user_name.capitalize()}")
+        print("_"*30)
+        print(f"Hello {user_name.capitalize()}. Welcome to your Password Locker Account")
+        print("-"*25)
+        print("-----Keep all your account passwords safe and secure in one place-----")
+
+
+
       
         
 
