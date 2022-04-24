@@ -94,5 +94,56 @@ def generate_random_passcode():
 
 
 def main():
-  
+  print("\n")
+  print("Hello! Welcome to Password Locker Application....\n")
+  print("-"*25)
+  print("Follow instructions below to proceed")
+  print("-"*10+">")
+
+  while True:
+    print("\n")
+    print("Choose options below.....")
+    print("li----> to Login if already have an existing account")
+    print("su-----> to Sign up if you are new to the application")
+    code= input("Answer: ").lower()
+
+    #signup if user selects su
+    if code == 'su':
+      print("\n")
+      print("CREATE PASSWORD LOCKER ACCOUNT")
+      print("_"*30)
+      user_name = input("Enter username: ")
+      while user_name == "":
+        print("-"*15)
+        print("Incorrect input!!!")
+        print("-"*15)
+        user_name = input("Enter username: ")
+
+      pass_code = input("Enter password: ")
+      while len(pass_code)<4:
+        print("----> Password too short. Must be atleast 4 characters.")
+        print("-"*10)
+        pass_code = input("Enter password: ")
+
+      confirm_pass_code = input("Confirm password: ")
+      #confirm if entered passwords match
+      while pass_code != confirm_pass_code:
+        print("-"*15)
+        print("Error:: Passwords did not match. Retry!")
+        print("-"*15)
+        pass_code = input("Enter password: ")
+        while len(pass_code)<4:
+          print("----> Password too short. Must be atleast 4 characters.")
+          print("-"*10)
+          pass_code = input("Enter password: ")
+
+        confirm_pass_code = input("Confirm password: ")
+
+      
+        
+
+    break
+if __name__ == '__main__':
+  main()
+
   
