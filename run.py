@@ -252,9 +252,14 @@ def main():
             print("SEARCH AVAILABLE CREDENTIALS")
             print("_"*20)
             cred_to_search = input("Enter name to search: ")
-            found_cred = search_cred(cred_to_search)
-            print(f"Password for Account {cred_to_search}: {found_cred.cred_pass_code}")
-
+            if search_cred(cred_to_search):
+              found_cred = search_cred(cred_to_search)
+              print(f"Password for Account {cred_to_search}: {found_cred.cred_pass_code}")
+            else:
+              print("-"*20)
+              print("That Credential was not found!")
+              print("-"*20)
+              
           elif option_code == "cp":
             print("\n")
             print("COPY CREDENTIALS TO CLIPBOARD")
@@ -407,8 +412,13 @@ def main():
             print("SEARCH AVAILABLE CREDENTIALS")
             print("_"*20)
             cred_to_search = input("Enter name to search: ")
-            found_cred = search_cred(cred_to_search)
-            print(f"Password for Account {cred_to_search}: {found_cred.cred_pass_code}")
+            if search_cred(cred_to_search):
+              found_cred = search_cred(cred_to_search)
+              print(f"Password for Account {cred_to_search}: {found_cred.cred_pass_code}")
+            else:
+              print("-"*20)
+              print("That Credential was not found!")
+              print("-"*20)
 
           elif option_code == "cp":
             print("\n")
